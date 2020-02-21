@@ -1,0 +1,50 @@
+SQL> select * from sensor;
+
+ SENSOR_ID	    X	       Y LAST_CHAR     ENERGY MAINTAINE
+---------- ---------- ---------- --------- ---------- ---------
+	 1	  150	     300 01-JAN-17	    2 555555555
+	 2	  200	     400 01-JAN-17	    3 123456789
+	 3	   50	      50 01-JAN-17	    3 222222222
+	 4	   50	      15 01-JAN-17	    3
+	 5	   60	      60 01-JAN-17	    4 222222222
+	 6	   50	      60 01-JAN-18	    3
+	 7	  150	     310 01-MAR-17	    3 121212121
+	 8	   60	      50 01-MAR-18	    4 222222222
+	 9	  115	     173 10-MAR-17	    3 777777777
+	10	   80	     120 01-MAR-18	    3 121212121
+
+10 rows selected.
+
+SQL> select * from road;
+
+ROAD_NO    NAME 			      LENGTH
+---------- ------------------------------ ----------
+1	   FORBES				 500
+2	   BIGELOW				 300
+3	   BAYARD				 100
+5	   century road 		 200
+
+
+SQL> set constraints all deferred;
+insert into worker values('555555555', 'Paula', 22, 1);
+update sensor set maintainer='555555555' where sensor_id=1;
+	
+commit;
+Constraint set.
+
+SQL> 
+1 row created.
+
+SQL> 
+1 row updated.
+
+SQL> select * from worker;
+
+SSN	  NAME					AGE	  RANK
+--------- ------------------------------ ---------- ----------
+123456789 John					 22	     3
+121212121 Jason 				 30	     5
+222222222 Mike					 25	     4
+777777777 Mary					 27	     7
+555555555 Paula 				 22	     1
+

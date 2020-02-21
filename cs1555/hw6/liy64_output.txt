@@ -1,0 +1,60 @@
+SQL> @liy64_query
+
+NAME
+------------------------------
+Pennsylvania Forest
+Garrett State Forest
+
+
+NAME
+------------------------------
+Allegheny National Forest
+Pennsylvania Forest
+Stone Valley
+
+
+ST       AREA       AREA
+-- ---------- ----------
+OH      45000      25500
+PA      50000      30500
+MD      59000      28000
+
+
+ SENSOR_ID          X          Y LAST_CHAR     ENERGY MAINTAINE
+---------- ---------- ---------- --------- ---------- ---------
+         4         50         15 01-JAN-17          3
+         6         50         60 01-JAN-18          3
+ SENSOR_ID SSN       NAME
+---------- --------- ------------------------------
+         3 123456789 John
+         2 123456789 John
+         1 123456789 John
+        10 121212121 Jason
+         8 121212121 Jason
+         5 121212121 Jason
+         7 222222222 Mike
+         9 777777777 Mary
+         6
+         4
+
+10 rows selected.
+
+ST ST
+-- --
+PA OH
+OH PA
+VA OH
+PA OH
+VA PA
+OH PA
+PA VA
+OH VA
+
+8 rows selected.
+
+
+ST        SUM
+-- ----------
+PA      30500
+
+SQL> spool of

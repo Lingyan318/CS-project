@@ -1,0 +1,415 @@
+SQL> spool hw2_liy64_output.txt
+SQL> @hw
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table dropped.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+SQL> @hw2_insert_good
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+INSERT INTO REPORT VALUES( 1, 57, to_date('10-JAN-2018 14:00:00', 'DD-MON-YYYY HH24:MI:SS') )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.SYS_C001507860) violated
+
+
+INSERT INTO REPORT VALUES( 1, 40, to_date('10-JAN-2018 20:00:00', 'DD-MON-YYYY HH24:MI:SS') )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.SYS_C001507860) violated
+
+
+
+1 row created.
+
+INSERT INTO REPORT VALUES( 2, 59, to_date('10-JAN-2018 14:00:00', 'DD-MON-YYYY HH24:MI:SS') )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.SYS_C001507860) violated
+
+
+
+1 row created.
+
+SQL> @hw2_insert.sad
+SP2-0310: unable to open file "hw2_insert.sad"
+SQL> @hw2_insert-bad
+SP2-0310: unable to open file "hw2_insert-bad.sql"
+SQL> @hw2_insert_bad
+INSERT INTO FOREST VALUES( '1', 'Allegheny National Forest', 40000.0, 0.3, 134.0, 550.0, 233.0, 598.0)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.PK_FOREST) violated
+
+
+INSERT INTO STATE VALUES( 'Pennsylvania', 'PA', 50000.0, 1400000 )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.PK_NAME) violated
+
+
+INSERT INTO COVERAGE VALUES( 1, 'PA', 0.4, 16000.0 )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.PK_FOREST_NO) violated
+
+
+INSERT INTO ROAD VALUES( 1, 'FORBES', 500.0 )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.PK_ROAD_NO) violated
+
+
+
+1 row created.
+
+INSERT INTO WORKER VALUES( '123456789', 'John', 22, 3 )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.PK_SSN) violated
+
+
+INSERT INTO SENSOR VALUES( 1, 150.0, 300.0, to_date('01-JAN-2018 10:00:00', 'DD-MON-YYYY HH24:MI:SS'), 2, '123456789' )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.PK_SENSOR_ID) violated
+
+
+INSERT INTO REPORT VALUES( 1, 55, to_date('10-JAN-2018 09:00:00', 'DD-MON-YYYY HH24:MI:SS') )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.SYS_C001507860) violated
+
+
+INSERT INTO COVERAGE VALUES( 2, 'PA', 0.4, 16000.0 )
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (LIY64.FK_FOREST_NO) violated - parent key not
+found
+
+
+INSERT INTO COVERAGE VALUES( 1, 'OH', 0.4, 16000.0 )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.PK_FOREST_NO) violated
+
+
+INSERT INTO INTERSECTION VALUES ( '2', '1' )
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (LIY64.FK1_FOREST_NO) violated - parent key not
+found
+
+
+INSERT INTO INTERSECTION VALUES ( '1', '3' )
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (LIY64.FK_ROAD_NO) violated - parent key not
+found
+
+
+INSERT INTO REPORT VALUES( 2, 55, to_date('10-JAN-2018 09:00:00', 'DD-MON-YYYY HH24:MI:SS') )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.SYS_C001507860) violated
+
+
+
+1 row created.
+
+INSERT INTO FOREST VALUES( '2', 'Pennsylvania Forest', 40000.0, 0.3, 134.0, 550.0, 233.0, 598.0)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.PK_FOREST) violated
+
+
+INSERT INTO STATE VALUES( 'Pennsylvania', 'OH', 45000.0, 1200000 )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.PK_NAME) violated
+
+
+INSERT INTO SENSOR VALUES( 2, 150.0, 300.0, to_date('01-JAN-2018 10:00:00', 'DD-MON-YYYY HH24:MI:SS'), null, '123456789' )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.PK_SENSOR_ID) violated
+
+
+INSERT INTO SENSOR VALUES( 2, 200.0, 400.0, to_date('01-JAN-2018 10:00:00', 'DD-MON-YYYY HH24:MI:SS'), -1, '123456789' )
+*
+ERROR at line 1:
+ORA-02290: check constraint (LIY64.CHK_ENERGY) violated
+
+
+INSERT INTO SENSOR VALUES( 2, 200.0, 400.0, to_date('01-JAN-2018 10:00:00', 'DD-MON-YYYY HH24:MI:SS'), 3, '123456790' )
+*
+ERROR at line 1:
+ORA-00001: unique constraint (LIY64.PK_SENSOR_ID) violated
+
+
+SQL> select forest_No from forest;
+
+FOREST_NO
+----------
+1
+2
+
+SQL> select name from state;
+
+NAME
+------------------------------
+Pennsylvania
+
+SQL> select forest_No from coverage;
+
+FOREST_NO
+----------
+1
+
+SQL> select Road_No from Road;
+
+ROAD_NO
+----------
+1
+2
+
+SQL> select * from intersection;
+
+FOREST_NO  ROAD_NO
+---------- ----------
+1	   1
+1	   1
+
+SQL> select * from sensor
+  2  ;
+
+ SENSOR_ID	    X	       Y LAST_CHAR     ENERGY MAINTAINE
+---------- ---------- ---------- --------- ---------- ---------
+	 1	  150	     300 01-JAN-18	    2 123456789
+	 2	  200	     400 01-JAN-18	    3 123456789
+	 3	   50	      50 01-JAN-18	    3 123456789
+
+SQL> select * from report;
+
+ SENSOR_ID TEMPERATURE REPORT_TI
+---------- ----------- ---------
+	 1	    55 10-JAN-18
+	 2	    58 10-JAN-18
+	 3	    50 10-JAN-18
+
+SQL> select * from worker;
+
+SSN	  NAME					AGE	  RANK
+--------- ------------------------------ ---------- ----------
+123456789 John					 22	     3
+
+SQL> select * from forest;
+
+FOREST_NO  NAME 				AREA ACID_LEVEL   MBR_XMIN
+---------- ------------------------------ ---------- ---------- ----------
+  MBR_XMAX   MBR_YMIN	MBR_YMAX
+---------- ---------- ----------
+1	   Allegheny National Forest	       40000	     .3        134
+       550	  233	     598
+
+2	   Allegheny National Forest	       10000	    .75 	21
+       100	   35	      78
+
+
+SQL> select * from state;
+
+NAME			       AB	AREA POPULATION
+------------------------------ -- ---------- ----------
+Pennsylvania		       PA      50000	1400000
+
+SQL> select * from coverage;
+
+FOREST_NO  ST PERCENTAGE       AREA
+---------- -- ---------- ----------
+1	   PA	      .4      16000
+
+SQL> select * from Road;
+
+ROAD_NO    NAME 			      LENGTH
+---------- ------------------------------ ----------
+1	   FORBES				 500
+2	   BIGELOW				 300
+
+SQL> select * from inersection;
+select * from inersection
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from intersection;
+
+FOREST_NO  ROAD_NO
+---------- ----------
+1	   1
+1	   1
+
+SQL> select * from sensor;
+
+ SENSOR_ID	    X	       Y LAST_CHAR     ENERGY MAINTAINE
+---------- ---------- ---------- --------- ---------- ---------
+	 1	  150	     300 01-JAN-18	    2 123456789
+	 2	  200	     400 01-JAN-18	    3 123456789
+	 3	   50	      50 01-JAN-18	    3 123456789
+
+SQL> select * from report;
+
+ SENSOR_ID TEMPERATURE REPORT_TI
+---------- ----------- ---------
+	 1	    55 10-JAN-18
+	 2	    58 10-JAN-18
+	 3	    50 10-JAN-18
+
+SQL> select * from worker;
+
+SSN	  NAME					AGE	  RANK
+--------- ------------------------------ ---------- ----------
+123456789 John					 22	     3
+
+SQL> spool off
+SQL> host ls
+Backup	    hw2_1.sql		 hw2_liy64_output.txt  liy64.sql      private	     typescript
+bin	    hw2_insert_bad.sql	 hw2.sql	       News	      public
+dbname.sql  hw2_insert_good.sql  hw.sql		       oradiag_liy64  studentdb.sql
+
+SQL> nano hw2_liy64_output.txt
+SP2-0734: unknown command beginning "nano hw2_l..." - rest of line ignored.
+SQL> host nano hw2_liy64_output.txt
+
+  GNU nano 2.0.9                File: hw2_liy64_output.txt                                       
+
+ORA-00942: table or view does not exist
+
+
+SQL> select * from intersection;
+
+FOREST_NO  ROAD_NO
+---------- ----------
+1          1
+1          1
+
+SQL> select * from sensor;
+
+ SENSOR_ID          X          Y LAST_CHAR     ENERGY MAINTAINE
+---------- ---------- ---------- --------- ---------- ---------
+         1        150        300 01-JAN-18          2 123456789
+         2        200        400 01-JAN-18          3 123456789
+         3         50         50 01-JAN-18          3 123456789
+
+SQL> select * from report;
+
+ SENSOR_ID TEMPERATURE REPORT_TI
+---------- ----------- ---------
+         1          55 10-JAN-18
+         2          58 10-JAN-18
+         3          50 10-JAN-18
+
+SQL> select * from worker;
+
+SSN	  NAME                                  AGE	  RANK
+--------- ------------------------------ ---------- ----------
+123456789 John                                   22          3
+
+SQL> spool off
+
