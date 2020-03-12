@@ -1,0 +1,29 @@
+c:\users\ling\documents\visual studio 2015\Projects\Game\Game\bin\Debug\Game.exe.config
+C:\Users\Ling\Documents\Visual Studio 2015\Projects\Game\Game\bin\Debug\Game.exe
+C:\Users\Ling\Documents\Visual Studio 2015\Projects\Game\Game\bin\Debug\Game.pdb
+C:\Users\Ling\Documents\Visual Studio 2015\Projects\Game\Game\obj\Debug\Game.csprojResolveAssemblyReference.cache
+C:\Users\Ling\Documents\Visual Studio 2015\Projects\Game\Game\obj\Debug\Game.Game1.resources
+C:\Users\Ling\Documents\Visual Studio 2015\Projects\Game\Game\obj\Debug\Game.Game2.resources
+C:\Users\Ling\Documents\Visual Studio 2015\Projects\Game\Game\obj\Debug\Game.Properties.Resources.resources
+C:\Users\Ling\Documents\Visual Studio 2015\Projects\Game\Game\obj\Debug\Game.csproj.GenerateResource.Cache
+C:\Users\Ling\Documents\Visual Studio 2015\Projects\Game\Game\obj\Debug\Game.exe
+C:\Users\Ling\Documents\Visual Studio 2015\Projects\Game\Game\obj\Debug\Game.pdb
+C:\Users\Ling\Documents\Visual Studio 2015\Projects\Game\Game\obj\Debug\Game.Menu.resources
+C:\Users\Ling\Documents\Visual Studio 2015\Projects\Game\Game\obj\Debug\Game.Game5.resources
+C:\Users\Ling\Documents\Visual Studio 2015\Projects\Game\Game\obj\Debug\Game.Game4.resources
+E:\1\Game\Game\bin\Debug\Game.exe.config
+E:\1\Game\Game\obj\Debug\Game.exe
+E:\1\Game\Game\obj\Debug\Game.pdb
+F:\1\Game\Game\bin\Debug\Game.exe.config
+F:\1\Game\Game\obj\Debug\Game.exe
+F:\1\Game\Game\obj\Debug\Game.pdb
+F:\1\Game\Game\bin\Debug\Game.exe
+F:\1\Game\Game\bin\Debug\Game.pdb
+F:\1\Game\Game\obj\Debug\Game.csprojResolveAssemblyReference.cache
+F:\1\Game\Game\obj\Debug\Game.Game4.resources
+F:\1\Game\Game\obj\Debug\Game.Game1.resources
+F:\1\Game\Game\obj\Debug\Game.Game2.resources
+F:\1\Game\Game\obj\Debug\Game.Game5.resources
+F:\1\Game\Game\obj\Debug\Game.Menu.resources
+F:\1\Game\Game\obj\Debug\Game.Properties.Resources.resources
+F:\1\Game\Game\obj\Debug\Game.csproj.GenerateResource.Cache
