@@ -1,0 +1,125 @@
+#title {
+	font-family: serif;
+	font-weight: bold;
+	font-size: 50px;
+	margin: 0;
+	margin-bottom: 5px;
+	margin-left: 50%;
+}
+
+header div, #register {
+	margin-left: 50%;
+	font-size: 1.5em;
+	font-weight: bold;
+	text-decoration: underline;
+	margin: 0;
+	padding-bottom: 15px;
+}
+
+#register {
+	margin-left: 50%;
+	padding-bottom: 9px;
+}
+
+#aptm {
+	margin-left: 50%;
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+.noAppt {
+	margin-left: 50%;
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+.appt {
+	margin-left: 50%;
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+
+input[type="text"], input[type="password"]{
+	margin-left: 50%;
+	margin: 5px;
+	padding: 7px 15px;
+    border: 1.2px solid black;
+}
+
+#error {
+	margin-left: 50%;
+	font-size: 1.1em;
+	font-weight: bold;
+	margin: 0;
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+#create {
+	margin-left: 50%;
+	font-size: 1.1em;
+}
+
+#usr, #pwd {
+	margin-left: 50%;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+#pwd {
+	margin-left: 50%;
+	padding-right: 2.8px;
+}
+
+#msg {
+	margin-left: 50%;
+	margin: 0;
+	padding: 0;
+	font-size: 1.8em;
+	font-weight: bold;
+	padding-bottom: 5px;
+}
+
+#ifMsg {
+	margin-left: 50%;
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+.flashes {
+	margin-left: 50%;
+	margin: 0;
+	font-size: 1.2em;
+	font-weight: bold;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+#goback {
+	margin-left: 50%;
+	font-size: 1.1em;
+	font-weight: bold;
+	margin: 0;
+	text-shadow: 1px 2px 2px gray;
+}
+
+.actions {
+	margin-left: 50%;
+	margin: 0;
+	font-size: 1.2em;
+	font-weight: bold;
+	padding-bottom: 5px;
+	display: block;
+}
+
+a:link, a:visited, a:hover, a:active {
+	margin-left: 50%;
+	text-decoration: none;
+	color: black;
+}

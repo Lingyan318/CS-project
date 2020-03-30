@@ -1,0 +1,52 @@
+body {
+  background-color: lightblue;
+}
+
+h1{
+    font-size: 30px;
+    text-align: center
+}
+
+#playerOne{
+    float: left;
+    width: 33%;
+}
+
+#playerTwo{
+    float: right;
+    width: 33%;
+}
+
+#table_div{
+    text-align: -webkit-center;
+    left:50%;
+}
+#start{
+	position: absolute;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+	left: 45%;
+}
+#timer{
+    position: fixed;
+    margin-left: 10%;
+}
+#timer1{
+    position: fixed;
+    margin-left: 5%;
+}
+#re_start{
+	position: relative;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+	left: 50%;
+}
+#t{
+	position: fixed;
+	width: 20px;
+	height: 30px;
+    margin-left:  80%;
+
+}

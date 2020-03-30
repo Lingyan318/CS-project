@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Game Board {{ super() }}{% endblock %}
+
+
+{% block content %}
+<h3>Hello! {{ game.user_name }}!</h3>
+<h1 id="title">{{ game.game_title }}</h1>
+{% if login %}<a href="{{ url_for('logout') }}">Log out</a>{% endif %}
+{% if login %}<a href="{{ url_for('land') }}">Home</a>{% endif %}
+<div id='table_div' class='game'></div>
+
+<div id="playerInfo">
+    <div id='playerOne' class='game'>
+        <p id="playerOne_take"></p>
+    </div>
+
+    <div id='playerTwo' class='game'>
+        <p id="playerTwo_take"></p>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='game.js') }}"></script>
+<script>
+game.gamestatus = {{ game|tojson }};
+game.initTable();
+setInterval(function () {
+    let xhr=new XMLHttpRequest();
+    xhr.open('POST','/game/'+game.gamestatus.game_id+'/');
+    send_data = {
+        method:'update',
+        nextturn:game.gamestatus.nextturn
+    };
+    xhr.send(JSON.stringify(send_data));
+    xhr.onreadystatechange=function (){
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                let res = JSON.parse(JSON.parse(xhr.responseText));
+                if(res.status === 'success'){
+                    for (let turn of res.turns){
+                        game.advance(turn[0], turn[1], game.gamestatus.nextturn);
+                        game.gamestatus.turns.push([turn[0], turn[1]]);
+                        let winner = game.checkwin(game.map);
+                        if(winner !== 0){
+                            game.gamestatus.over = true;
+                            if(winner === 1){
+                                if(game.gamestatus.user_id === game.gamestatus.player_1_id){
+                                    alert('You win!')
+                                }
+                                else if(game.gamestatus.user_id === game.gamestatus.player_2_id){
+                                    alert(game.gamestatus.player_1_name+' win!')
+                                }
+                            }
+                            else if(winner === 2){
+                                if(game.gamestatus.user_id === game.gamestatus.player_2_id){
+                                    alert('You win!')
+                                }
+                                else if(game.gamestatus.user_id === game.gamestatus.player_1_id){
+                                    alert(game.gamestatus.player_2_name+' win!')
+                                }
+                            }
+                            console.log('win');
+                        }
+                    }
+                }
+                else {
+                    console.log('update error')
+                }
+
+            }
+        }
+    }
+}, 1000)
+</script>
+{% endblock %}

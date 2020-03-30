@@ -1,0 +1,69 @@
+{% extends 'login.html' %}
+
+{% block header %}
+	{% if ut == "s" %}
+		<div>Welcome, {{ target.usr }}!</div>
+	{% elif ut == "p" or ut == "o"%}
+  		<div>{{ target.usr }}'s profile</div>
+  	{% endif %}
+{% endblock %}
+
+{% block content %}
+	{% if ut == "o" %}
+		<div><a id="goback" href="{{ url_for('view') }}"><- Go back</a></div>
+	{% elif ut == "p" %}
+		<div><a id="goback" href="{{ url_for('login') }}"><- Go back</a></div>
+	{% elif ut == "s" %}
+		<div><a id="goback" href="{{ url_for('login') }}"><- Go back</a></div>
+	{% endif %}
+
+	{% if ut == "s" %}
+		<p id="msg">* View your appointments</p>
+	{% elif ut == "p" or ut == "o"%}
+  		<p id="msg">* View {{ target.usr }}'s appointments</p>
+  	{% endif %}
+
+	{% for date in dtList %}
+		{% if target.free == False %}
+			{% for appt in target.appt %}
+				{% if date.year == appt.dt.year and date.month == appt.dt.month and date.day == appt.dt.day and date.hour == appt.dt.hour %}
+					<div class="appt">
+						{% if ut == "s" or ut == "o"%}
+							{{appt.dt.year}}/{{appt.dt.month}}/{{appt.dt.day}} - H {{appt.dt.hour}} 
+							&nbsp;&nbsp;&nbsp;{{appt.patron.usr}}
+						{% elif ut == "p" %}
+							{% if patronName == appt.patron.usr %}
+								{{appt.dt.year}}/{{appt.dt.month}}/{{appt.dt.day}} - H {{appt.dt.hour}} 
+								&nbsp;&nbsp;&nbsp;You Booked
+							{% else%}
+								{{appt.dt.year}}/{{appt.dt.month}}/{{appt.dt.day}} - H {{appt.dt.hour}} 
+								&nbsp;&nbsp;&nbsp;Booked
+							{% endif %}
+						{% endif %}
+					</div>
+				{% else %}
+					<div class="noAppt">
+						{{date.year}}/{{date.month}}/{{date.day}} - H {{date.hour}}
+						&nbsp;&nbsp;&nbsp;No appointment
+						{% if ut == "p" %}
+							<a href="{{ url_for("book", sn=target.usr, y=date.year, 
+							m=date.month, d=date.day, h=date.hour, patronName=patronName)}}">Book Now</a>
+						{% endif %}
+					</div>
+				{% endif %}
+			{% endfor %}
+		{% else %}
+			<div class="noAppt">
+				{{date.year}}/{{date.month}}/{{date.day}} - H {{date.hour}}
+				&nbsp;&nbsp;&nbsp;No appointment
+				{% if ut == "p" %}
+					<a href="{{ url_for("book", sn=target.usr, y=date.year, 
+					m=date.month, d=date.day, h=date.hour, patronName=patronName)}}">Book Now</a>
+				{% endif %}
+			</div>
+		{% endif %}
+	{% endfor %}
+	
+	<div><a id="msg" href="{{ url_for('logout') }}">* Log out</a></div>
+
+{% endblock %}

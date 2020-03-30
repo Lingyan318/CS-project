@@ -1,0 +1,57 @@
+{% extends 'login.html' %}
+
+{% block header %}
+  	<div>Welcome, {{ target.usr }}!</div>
+{% endblock %}
+
+{% block content %}
+	{% if ut == "o" %}
+		<div><a id="goback" href="{{ url_for('view') }}"><- Go back</a></div>
+	{% elif ut == "p" %}
+		<div><a id="goback" href="{{ url_for('login') }}"><- Go back</a></div>
+	{% endif %}
+	<!-- Only for the patron -->
+	{% if ut == "p" %}
+		<p id="msg">* View stylists in our Salon</p>
+		{% if stylists %}
+			{% for stylist in stylists %}
+				<div>
+					<span id="ifMsg">
+						{{stylist.usr}}:
+						<a href="{{url_for("stylist_p", target=stylist.usr, ut="p", 
+						patronName=target.usr)}}">(View profile)</a>
+					</span>
+				</div>
+			{% endfor %}
+		{% else %}
+			<p><span id="ifMsg">No stylist accounts</span></p>
+		{% endif %}
+	{% endif %}
+
+	<div id="msg">* View Appointments:</div>
+	{% if target.free == True %}
+		<div id="ifMsg">None</div>
+	{% elif stylists %}
+		{% for stylist in stylists %}
+			{% for appt in stylist.appt %}
+				{% if appt.patron.usr == target.usr %}
+					<div id="ifMsg">
+						{{stylist.usr}} at {{appt.dt.year}}/{{appt.dt.month}}/{{appt.dt.day}} 
+						- H {{appt.dt.hour}}
+						{% if ut == "p" %}
+							<a href="{{ url_for("cancel", sn=stylist.usr, y=appt.dt.year, 
+							m=appt.dt.month, d=appt.dt.day, h=appt.dt.hour, patronName=target.usr)}}">
+							 (Cancel the appointment)</a>
+						{% endif %}
+					</div>
+				{% endif %}
+			{% endfor %}
+		{% endfor %}
+	{% else %}
+		<div><span id="ifMsg">None since no stylists yet</span></div>
+	{% endif %}
+
+	{% if ut == "p" %}
+		<a id="msg" href="{{ url_for('logout') }}">* Log out</a>
+	{% endif %}
+{% endblock %}

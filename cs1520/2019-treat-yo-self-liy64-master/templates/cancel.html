@@ -1,0 +1,30 @@
+{% extends 'login.html' %}
+
+{% block header %}
+  	<div>Cancel the appointment, {{patronName}}?</div>
+{% endblock %}
+
+{% block content %}
+	<span id="usr">Book with {{sn}} at {{date.year}}/{{date.month}}/{{date.day}} H {{date.hour}}?</span>
+	
+	<form method="post">
+		<input type="submit" value="Cancel the appointment"/>
+	</form>
+
+	<div>
+		<a id="goback" href="{{ url_for("login") }}"><- Go to login page</a>
+	</div>
+	
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    <div class=flashes>
+	    {% for message in messages %}
+	     	{{ message }}
+	    {% endfor %}
+		</div>
+	  {% endif %}
+	{% endwith %}
+
+	<a id="msg" href="{{ url_for('logout') }}">* Log out</a>
+	
+{% endblock %}

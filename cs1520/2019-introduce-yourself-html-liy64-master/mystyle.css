@@ -1,0 +1,41 @@
+
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+h2{ 
+	color: red;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+em{
+	color:red,text-decoration:underline
+}
+span{
+	font-weight: bolder;
+	font-size: 40px;
+	color: white;
+}
+img{
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+    
+}
+.pp {color: black; 
+	font-family:cursive;
+	font-size:30px;}
+#tt {
+	background-color:rgb(180, 180, 180);
+}
+#dd{border-style: solid;}
+#head1{}

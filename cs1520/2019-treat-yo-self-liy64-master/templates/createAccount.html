@@ -1,0 +1,38 @@
+{% extends 'login.html' %}
+
+{% block header %}
+	<div>Welcome, manager!</div>
+{% endblock %}
+
+{% block content %}
+	<a id="goback" href="{{ url_for('owner') }}"><- Go back</a>
+
+	<div id="msg">Create a new stylist account</div>
+
+	<form method="post">
+		<span id="usr">Username:</span>  <input type="text" name="new_usr" />
+		<br />
+		<span id="pwd">Password: </span>  <input type="text" name="new_pwd" />
+		<br />
+		<input type="submit" value="Create"/>
+	</form>
+
+	{% if error %}
+		<div id="error">
+			<span>Error:</span> {{ error }}
+		</div>
+	{% endif %}
+
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    <div class=flashes>
+	    {% for message in messages %}
+	     	{{ message }}
+	    {% endfor %}
+		</div>
+	  {% endif %}
+	{% endwith %}
+
+	<a id="msg" href="{{ url_for('logout') }}">* Log out</a>
+	
+{% endblock %}

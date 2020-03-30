@@ -1,0 +1,36 @@
+{% extends 'login.html' %}
+
+{% block header %}
+	<div>Welcome to Treat Yo Salon!</div>
+{% endblock %}
+
+{% block content %}
+	<a id="goback" href="{{ url_for('login') }}"><- Go back</a>
+	<div id="msg">Create a new patron account</div>
+	<div id="create"> <strong>Note:</strong><br />
+	</div>
+	<form method="post">
+		<span id="usr">Username:</span>  <input type="text" name="new_usr" />
+		<br />
+		<span id="pwd">Password: </span>  <input type="text" name="new_pwd" />
+		<br />
+		<input type="submit" value="Register Now"/>
+	</form>
+
+	{% if error %}
+		<div id="error">
+			<span>Error:</span> {{ error }}
+		</div>
+	{% endif %}
+
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    <div class=flashes>
+	    {% for message in messages %}
+	     	{{ message }}
+	    {% endfor %}
+		</div>
+	  {% endif %}
+	{% endwith %}
+
+{% endblock %}

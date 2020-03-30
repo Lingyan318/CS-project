@@ -1,0 +1,16 @@
+{% extends 'login.html' %}
+
+{% block header %}
+  	<div>Welcome, manager!</div>
+{% endblock %}
+
+{% block content %}
+	<a id="goback" href="{{ url_for('login') }}"><- Go back</a>
+
+	<a class="actions" href="{{ url_for('create') }}">Create a new stylist account</a>
+
+	<a class="actions" href="{{ url_for('view') }}">View stylist accounts</a>
+
+	<a class="actions" href="{{ url_for('logout') }}">Log out</a>
+{% endblock %}
+

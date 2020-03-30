@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Salon</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="styles.css") }}">
+	</head>
+	<nav>
+		<p id="title">Salon</p>
+	</nav>
+	<section class="content">
+		<header>
+			{% block header %}
+				<div>Log in to Salon System</div>
+			{% endblock %}
+		</header>
+
+		{% block content %}
+			<form method="post">
+				<span id="usr">Username:</span>  <input type="text" name="usr" />
+				<br />
+				<span id="pwd">Password: </span>  <input type="password" name="pwd" />
+				<br />
+				<input type="submit" value="Log in"/>
+			</form>
+
+			<div id="register">Register a patron account now</div>
+			<a id="usr" href="{{ url_for('register') }}">-> Register </a>
+
+			{% if error %}
+				<div id="error">
+					<span>Error:</span> {{ error }}
+				</div>
+			{% endif %}
+		{% endblock %}
+	</section>
+</html>

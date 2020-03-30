@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Login</h2>
+  {% if login %}<a href="{{ url_for('logout') }}">Log out</a>{% endif %}
+  {% if errormsg %}<p class="error"><strong>Error:</strong> {{ errormsg }}{% endif %}
+  <a href="{{ url_for('signup') }}">Sign up</a>
+  <form action="{{ url_for('login') }}" method="post">
+    <dl>
+      <dt>Username:
+      <dd><input type="text" name="name">
+      <dt>Password:
+      <dd><input type="password" name="pass">
+      <dd><input type="submit" value="Login">
+    </dl>
+  </form>
+{% endblock %}

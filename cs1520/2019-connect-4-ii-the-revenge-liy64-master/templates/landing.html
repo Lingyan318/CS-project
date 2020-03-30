@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Game Board {{ super() }}{% endblock %}
+
+
+{% block content %}
+
+<h2>Games</h2>
+{% if login %}<a href="{{ url_for('logout') }}">Log out</a>{% endif %}
+<button onclick="create_game()">Create Game</button>
+{% if involve_games %}
+<ul id="involve">
+    {% for game in involve_games %}
+    <li id="{{ game.id }}">
+        <a href="{{ url_for('game', game_id = game.id)}}">{{ game.game_title() }}</a>
+        {% if game.player_one_id == userid %}
+        <button onclick="delete_game({{ game.id }})">Delete</button>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p id = "noinvolve">Currently, there are no games available to play.</p>
+{% endif %}
+
+<CAPTION><EM>Player's Top 10</EM></CAPTION>
+<table id="finish">
+    <tr>
+        <th>gameid</th>
+        <th>game</th>
+        <th>scores</th>
+    </tr>
+    {% if finish_games %}
+    {% for game in finish_games %}
+    <tr>
+        <td>{{ game.id }}</td>
+        <td><a href="{{url_for('game', game_id = game.id)}}">{{ game.game_title() }}</a></td>
+        <td>{{ game.nextturn-1 }}</td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr><td>No record</td></tr>
+    {% endif %}
+</table>
+
+<CAPTION><EM>All Player's Top 10</EM></CAPTION>
+<table id="allplayer">
+    <tr>
+        <th>gameid</th>
+        <th>game</th>
+        <th>scores</th>
+    </tr>
+    {% if all_games %}
+    {% for game in all_games %}
+    <tr>
+        <td>{{ game.id }}</td>
+        <td><a href="{{url_for('game', game_id = game.id)}}">{{ game.game_title() }}</a></td>
+        <td>{{ game.nextturn-1 }}</td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr><td>No record</td></tr>
+    {% endif %}
+</table>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    function create_game() {
+            let player_two=prompt("what is another player's name?");
+            if(player_two === null){
+                return
+            }
+
+            let xhr=new XMLHttpRequest();
+            xhr.open('POST','/game');
+            send_data = {
+                player_two:player_two
+            };
+            console.log(JSON.stringify(send_data));
+            xhr.send(JSON.stringify(send_data));
+            xhr.onreadystatechange=function (){
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let res = JSON.parse(JSON.parse(xhr.responseText));
+                        if(res.status !== 0){
+                            alert("No such player!!")
+                        }else {
+                            ul = $("#involve:first");
+                            console.log(ul);
+                            if(ul.length === 0){
+                                let p = $("p#noinvolve");
+                                p.before('<ul id="involve"></ul>');
+                                p.remove();
+                            }
+                            ulchild = $("#involve:first").append('<li id="'+res.id.toString()+'">' +
+                                '<a href="\game\\'+res.id.toString()+'">'+res.title+'</a>' +
+                                '<button onclick="delete_game('+res.id.toString()+')">Delete</button></li>');
+                        }
+                    }
+                }
+            }
+    }
+
+    function delete_game(id) {
+        console.log(id);
+        let node = $("li#"+id.toString());
+        console.log(node);
+        node.remove();
+        let lis = $("ul#involve li");
+        if(lis.length === 0){
+            let ul = $("ul#involve");
+            ul.after('<p id = "noinvolve">Currently, there are no games available to play.</p>')
+            ul.remove();
+        }
+        let xhr=new XMLHttpRequest();
+        xhr.open('DELETE','/game');
+        send_data = {
+            game_id:id
+        };
+        console.log(JSON.stringify(send_data));
+        xhr.send(JSON.stringify(send_data));
+        xhr.onreadystatechange=function (){
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    let res = JSON.parse(JSON.parse(xhr.responseText));
+                    if(res.status !== 0){
+                        alert("Delete error!")
+                    }else {
+
+                    }
+                }
+            }
+        }
+
+    }
+</script>
+{% endblock %}
