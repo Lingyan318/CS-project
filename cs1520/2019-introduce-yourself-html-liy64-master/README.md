@@ -24,7 +24,7 @@ e.g. <link rel="stylesheet" type="text/css">
   
 # Inline CSS Styles  
 -5 percent  
-e.g. <p style="color:red;">...</p>
+e.g. <p style="color:red;">...</p>  
   
 # Use of style block in HTML  
 -5 percent  
