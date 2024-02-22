@@ -1,0 +1,60 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class DNSResolver {
+    public static int[] getMinTime(int cache_size, int cache_time, int serve_time, String[] urls) {
+        int[] minTimes = new int[urls.length];
+        Map<String, Integer> cache = new HashMap<>();
+        String[] cacheOrder = new String[cache_size];
+        int cacheIndex = 0;
+
+        for (int i = 0; i < urls.length; i++) {
+            String url = urls[i];
+
+            // Check if URL is in cache
+            if (cache.containsKey(url)) {
+                minTimes[i] = cache_time;
+                // Update cache order (Move URL to the end)
+                updateCacheOrder(cacheOrder, url, cacheIndex);
+            } else {
+                minTimes[i] = serve_time;
+
+                // Add URL to cache
+                cache.put(url, serve_time);
+                cacheOrder[cacheIndex] = url;
+                cacheIndex = (cacheIndex + 1) % cache_size;
+            }
+        }
+
+        return minTimes;
+    }
+
+    private static void updateCacheOrder(String[] cacheOrder, String url, int cacheIndex) {
+        int index = -1;
+        for (int i = 0; i < cacheOrder.length; i++) {
+            if (cacheOrder[i] != null && cacheOrder[i].equals(url)) {
+                index = i;
+                break;
+            }
+        }
+        if (index != -1) {
+            String temp = cacheOrder[index];
+            for (int i = index; i < cacheOrder.length - 1; i++) {
+                cacheOrder[i] = cacheOrder[i + 1];
+            }
+            cacheOrder[cacheIndex - 1] = temp;
+        }
+    }
+
+    public static void main(String[] args) {
+        int cache_size = 2;
+        int cache_time = 3;
+        int serve_time = 5;
+        String[] urls = {"www.google.com", "www.yahoo.com", "www.yahoo.com", "www.google.com", "www.coursera.com"};
+
+        int[] minTimes = getMinTime(cache_size, cache_time, serve_time, urls);
+        for (int time : minTimes) {
+            System.out.println(time);
+        }
+    }
+}
